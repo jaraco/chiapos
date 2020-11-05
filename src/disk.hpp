@@ -224,6 +224,7 @@ struct BufferedDisk : Disk
 
     uint8_t const* Read(uint64_t begin, uint64_t length) override
     {
+        assert(length < read_ahead);
         NeedReadCache();
         // all allocations need 7 bytes head-room, since
         // SliceInt64FromBytes() may overrun by 7 bytes
