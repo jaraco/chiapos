@@ -228,7 +228,7 @@ struct BufferedDisk : Disk
         // all allocations need 7 bytes head-room, since
         // SliceInt64FromBytes() may overrun by 7 bytes
         if (read_buffer_start_ <= begin && read_buffer_start_ + read_buffer_size_ > begin + length + 7) {
-            // if the read is entirely inside the buffer, just memcopy it out
+            // if the read is entirely inside the buffer, just return it
             return read_buffer_.get() + (begin - read_buffer_start_);
         }
         else if (begin >= read_buffer_start_ || begin == 0) {
