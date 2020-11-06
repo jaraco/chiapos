@@ -196,7 +196,7 @@ Phase2Results RunPhase2(
                 new_entry += Bits(entry_offset, kOffsetSize);
 
                 uint8_t bytes[20];
-                assert(entry_size <= sizeof(bytes));
+                assert(entry_size <= int(sizeof(bytes)));
                 new_entry.ToBytes(bytes);
                 disk.Write(read_index * entry_size, bytes, entry_size);
             }
