@@ -876,7 +876,7 @@ TEST_CASE("bitfield_index edge-cases")
     CHECK(idx.lookup(0, bitfield_index::kIndexBucket * 2) == std::pair<uint64_t, uint64_t>{0,2});
     CHECK(idx.lookup(0, 1048576 - 1) == std::pair<uint64_t, uint64_t>{0,3});
 
-    CHECK(idx.lookup(bitfield_index::kIndexBucket, 0) == std::pair<uint64_t, uint64_t>{1,1});
+    CHECK(idx.lookup(bitfield_index::kIndexBucket, 0) == std::pair<uint64_t, uint64_t>{1,0});
     CHECK(idx.lookup(bitfield_index::kIndexBucket, bitfield_index::kIndexBucket) == std::pair<uint64_t, uint64_t>{1,1});
     CHECK(idx.lookup(bitfield_index::kIndexBucket, 1048576 - 1 - bitfield_index::kIndexBucket)
 		== std::pair<uint64_t, uint64_t>{1,2});
@@ -894,7 +894,7 @@ void test_bitfield_size(int const size)
     bitfield_index const idx(b);
     CHECK(idx.lookup(0, 0) == std::pair<uint64_t, uint64_t>{0,0});
     CHECK(idx.lookup(0, size - 1) == std::pair<uint64_t, uint64_t>{0,1});
-    CHECK(idx.lookup(size - 1, 0) == std::pair<uint64_t, uint64_t>{1,1});
+    CHECK(idx.lookup(size - 1, 0) == std::pair<uint64_t, uint64_t>{1,0});
 }
 
 TEST_CASE("bitfield_index edge-sizes")
