@@ -40,8 +40,8 @@ struct bitfield_index
         uint64_t const bucket = pos / kIndexBucket;
 
         assert(bucket < index_.size());
-        assert(pos < bitfield_.size());
-        assert(pos + offset < bitfield_.size());
+        assert(pos < uint64_t(bitfield_.size()));
+        assert(pos + offset < uint64_t(bitfield_.size()));
         assert(bitfield_.get(pos) && bitfield_.get(pos + offset));
 
         uint64_t const base = index_[bucket];
